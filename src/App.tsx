@@ -1,7 +1,7 @@
 import React from "react";
 
 import Hero from "./components/Hero";
-import Demo from "./components/Demo";
+import Core from "./components/Core";
 
 export default function App() {
     return (
@@ -9,7 +9,7 @@ export default function App() {
             <div className="main">
                 <div className="app">
                     <Hero />
-                    <Demo />
+                    <Core />
                 </div>
             </div>
         </main>
