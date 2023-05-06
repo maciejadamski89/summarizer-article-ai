@@ -68,7 +68,7 @@ export default function Core() {
     };
 
     return (
-        <section className="w-full max-w-4xl mt-16">
+        <section className="w-full max-w-4xl my-16">
             <div className="flex flex-col w-full gap-2">
                 <Label title="Provider URL with article to summarize" />
                 <Form
@@ -76,43 +76,47 @@ export default function Core() {
                     setArticle={setArticle}
                     article={article}
                 />
-                <Label title="Search history" />
-                <div className="flex flex-col gap-1 overflow-y-auto max-h-60">
-                    {allArticles.map((article, index) => (
-                        <div
-                            key={`link-${index}`}
-                            onClick={() => setArticle(article)}
-                            className="flex flex-row items-center justify-start w-full gap-4 p-4 overflow-hidden text-base font-medium leading-7 text-white no-underline bg-white cursor-pointer rounded-xl bg-opacity-5"
-                        >
-                            <p className="text-sm font-medium">
-                                {article?.url}
-                            </p>
-                        </div>
-                    ))}
-                </div>
-                <div className="flex items-center justify-center max-w-full my-10">
-                    {isFetching ? (
-                        <div className="flex flex-col items-center justify-center">
-                            <p className="mb-3 text-sm text-gray-400 font-base">
-                                Please wait. It's take a while.
-                            </p>
-                            <Loader />
-                        </div>
-                    ) : error ? (
-                        // @ts-ignore
-                        <p className="text-red-400">{error?.data.error}</p>
-                    ) : errorMessage ? (
-                        <p className="text-red-400">{errorMessage}</p>
-                    ) : (
-                        article.summary && (
-                            <div className="flex flex-col gap-3">
-                                <Label title="Article Summary" />
-                                <div className="w-full p-10 py-4 pl-10 pr-12 overflow-hidden text-base font-medium leading-7 text-gray-400 no-underline bg-white rounded-xl bg-opacity-5">
-                                    <p>{article.summary}</p>
-                                </div>
+                <div className="mt-10">
+                    <Label title="Search history" />
+                    <div className="flex flex-col gap-1 mt-3 overflow-y-auto max-h-60">
+                        {allArticles.map((article, index) => (
+                            <div
+                                key={`link-${index}`}
+                                onClick={() => setArticle(article)}
+                                className="flex flex-row items-center justify-start w-full gap-4 p-4 overflow-hidden text-base font-medium leading-7 text-white no-underline bg-white cursor-pointer rounded-xl bg-opacity-5"
+                            >
+                                <p className="text-sm font-medium">
+                                    {article?.url}
+                                </p>
                             </div>
-                        )
-                    )}
+                        ))}
+                    </div>
+                </div>
+                <div className="mt-10">
+                    <Label title="Article Summary" />
+                    <div className="flex items-center justify-center max-w-full mt-3">
+                        {isFetching ? (
+                            <div className="flex flex-col items-center justify-center">
+                                <p className="mb-3 text-sm text-gray-400 font-base">
+                                    Please wait. It's take a while.
+                                </p>
+                                <Loader />
+                            </div>
+                        ) : error ? (
+                            // @ts-ignore
+                            <p className="text-red-400">{error?.data.error}</p>
+                        ) : errorMessage ? (
+                            <p className="text-red-400">{errorMessage}</p>
+                        ) : (
+                            article.summary && (
+                                <div className="flex flex-col gap-3">
+                                    <div className="w-full p-10 py-4 pl-10 pr-12 overflow-hidden text-base font-medium leading-7 text-gray-400 no-underline bg-white rounded-xl bg-opacity-5">
+                                        <p>{article.summary}</p>
+                                    </div>
+                                </div>
+                            )
+                        )}
+                    </div>
                 </div>
             </div>
         </section>
