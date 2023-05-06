@@ -82,7 +82,7 @@ export default function Core() {
                         <div
                             key={`link-${index}`}
                             onClick={() => setArticle(article)}
-                            className="flex flex-row items-center justify-start w-full gap-4 p-4 overflow-hidden text-base font-medium leading-7 text-white no-underline bg-white rounded-xl bg-opacity-5"
+                            className="flex flex-row items-center justify-start w-full gap-4 p-4 overflow-hidden text-base font-medium leading-7 text-white no-underline bg-white cursor-pointer rounded-xl bg-opacity-5"
                         >
                             <p className="text-sm font-medium">
                                 {article?.url}
